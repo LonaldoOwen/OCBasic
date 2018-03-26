@@ -15,6 +15,9 @@
 // 作用域: 本文件内
 #define some_define_int 32
 
+// 引用globalSomeIntInAnotherPerson
+extern int globalSomeIntInAnotherPerson;
+
 
 @implementation SomePerson
 
@@ -61,6 +64,10 @@ int someGlobalInt = 0;
     someGlobalInt ++;
     NSLog(@"someGlobalInt: %d", someGlobalInt);
     
+    // 引用,全局变量
+    globalSomeIntInAnotherPerson ++;
+    NSLog(@"globalSomeIntInAnotherPerson: %d", globalSomeIntInAnotherPerson);
+    
     // const local variable
     // 初始化后，就不可以再修改了；
     // 作用域：
@@ -76,7 +83,7 @@ int someGlobalInt = 0;
     // using extern const variable
     [AnotherPersonExternalStringVariable stringByAppendingString:@"xxxxx"];
     NSLog(@"AnotherPersonExternalStringVariable: %@", AnotherPersonExternalStringVariable);
-    
+    // AnotherPersonExternalStringVariable是const类型，不可变
     
     //
     NSLog(@"My fullname is: %@", [self.lastName stringByAppendingString:self.firstName]);

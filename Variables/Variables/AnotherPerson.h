@@ -8,10 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+// AnotherPersonExternalStringVariable
+// 在此处引用，其他文件import该文件后，就可以使用该变量
+extern NSString *const AnotherPersonExternalStringVariable;
+
 @interface AnotherPerson : NSObject
 
-extern NSString * const AnotherPersonExternalStringVariable;
+// AnotherPersonExternalStringVariable
+//extern NSString * const AnotherPersonExternalStringVariable;
 
 -(void)printMyFullName;
+
+
 
 @end

@@ -11,8 +11,14 @@
 #import "SomePerson.h"
 #
 
-@implementation AnotherPerson
 
+// 
+int globalSomeIntInAnotherPerson = 0;
+
+// global const variable: AnotherPersonExternalStringVariable
+NSString *const AnotherPersonExternalStringVariable = @"External String variable";
+
+@implementation AnotherPerson
 
 
 //int someGlobalInt = 0;
@@ -20,8 +26,8 @@
 // clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 
-//
-NSString * const AnotherPersonExternalStringVariable = @"External String variable";
+// 定义AnotherPersonExternalStringVariable
+//NSString * const AnotherPersonExternalStringVariable = @"External String variable";
 
 
 -(void)printMyFullName {
