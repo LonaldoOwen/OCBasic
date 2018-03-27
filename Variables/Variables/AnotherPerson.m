@@ -9,14 +9,17 @@
 
 #import "AnotherPerson.h"
 #import "SomePerson.h"
-#
+
 
 
 // 
 int globalSomeIntInAnotherPerson = 0;
-
 // global const variable: AnotherPersonExternalStringVariable
 NSString *const AnotherPersonExternalStringVariable = @"External String variable";
+// static global varible
+static int kAnotherStaticInt = 0;
+
+
 
 @implementation AnotherPerson
 
@@ -31,6 +34,11 @@ NSString *const AnotherPersonExternalStringVariable = @"External String variable
 
 
 -(void)printMyFullName {
+    NSLog(@"#lisi");
+    //
+    kAnotherStaticInt ++;
+    NSLog(@"kAnotherStaticInt = %d", kAnotherStaticInt);
+    
     NSLog(@"AnotherPersonExternalStringVariable: %@", AnotherPersonExternalStringVariable);
 }
 

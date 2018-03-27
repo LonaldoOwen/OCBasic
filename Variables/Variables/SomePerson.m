@@ -13,22 +13,25 @@
 // define a const variable
 // preprocessor(预处理), and no memory will be allocated for it；宏定义
 // 作用域: 本文件内
-#define some_define_int 32
+#define SOME_DEFINE_INT 32
 
 // 引用globalSomeIntInAnotherPerson
 extern int globalSomeIntInAnotherPerson;
-
-
-@implementation SomePerson
-
 
 // global int variable
 // 只初始化一次，如果变量被修改，值将随修改变化，不会重新初始化；
 // 作用域：在本文件内，任何方法都可以使用此变量；其他文件如果在定义相同名字的变量时，编译器会报错
 int someGlobalInt = 0;
 
+// static global varible
+// 只初始化一次，如果变量被修改，值将随修改变化，不会重新初始化；
+// 作用域：在本文件内,任何方法都可以使用此变量；
+static int kAnotherStaticInt = 0;
 
 
+
+
+@implementation SomePerson
 
 
 -(id)initWithFirstName: (NSString *)aFirstName lastName: (NSString *)aLastName {
@@ -59,6 +62,12 @@ int someGlobalInt = 0;
     static int kSomeStaticInt = 0;
     kSomeStaticInt ++;
     NSLog(@"kSomeStaticInt = %d", kSomeStaticInt);
+    static NSString *kCellIdentifier = @"CellIdentifier";
+      NSLog(@"kCellIdentifier = %@", kCellIdentifier);
+    
+    // static global variable
+    kAnotherStaticInt ++;
+    NSLog(@"kAnotherStaticInt = %d", kAnotherStaticInt);
     
     // change someGlobalInt
     someGlobalInt ++;
@@ -77,8 +86,8 @@ int someGlobalInt = 0;
     
     // using define variable
     //some_define_int = 40;   //Expression is not assignable
-    int someTemp = some_define_int;
-    NSLog(@"someTemp = some_define_int: %d", someTemp);
+    int someTemp = SOME_DEFINE_INT;
+    NSLog(@"someTemp = SOME_DEFINE_INT: %d", someTemp);
     
     // using extern const variable
     [AnotherPersonExternalStringVariable stringByAppendingString:@"xxxxx"];

@@ -13,6 +13,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SomePerson.h"
+#import "AnotherPerson.h"
 
 
 
@@ -28,6 +29,10 @@ int main(int argc, const char * argv[]) {
         [zhangsan printMyFullName];
         [zhangsan printMyFullName];
         
+        AnotherPerson *lisi = [[AnotherPerson alloc] init];
+        [lisi printMyFullName];
+        [lisi printMyFullName];
+        [lisi printMyFullName];
         
     }
     return 0;
