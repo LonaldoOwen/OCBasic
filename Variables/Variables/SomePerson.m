@@ -24,11 +24,13 @@ extern int globalSomeIntInAnotherPerson;
 int someGlobalInt = 0;
 
 // static global varible
-// 只初始化一次，如果变量被修改，值将随修改变化，不会重新初始化；
+// 只初始化一次，内存中只有一份拷贝，如果变量被修改，值将随修改变化，不会重新初始化；
 // 作用域：在本文件内,任何方法都可以使用此变量；
 static int kAnotherStaticInt = 0;
 
-
+// static const varible
+static const int kSomeStaticConstInt = 9;
+static NSString *const kSomeStaticConstString = @"SomeStaticConstString";
 
 
 @implementation SomePerson
@@ -56,14 +58,35 @@ static int kAnotherStaticInt = 0;
     someLocalInt ++;
     NSLog(@"someLocalInt = %d", someLocalInt);
     
+    NSString *someString = @"SomeString";
+    NSString *anotherString = @"AnotherString";
+    NSString *fullString = [someString stringByAppendingString:anotherString];
+    NSString *thirdString = someString;
+    thirdString = anotherString;
+    NSLog(@"fullString: %@", fullString);
+    
+    NSMutableString *someMutableString = [[NSMutableString alloc] initWithString:@"someMutableString"];
+    [someMutableString stringByAppendingString:@"aString"];
+    [someMutableString appendString:@"aString"];
+    NSLog(@"someMutableString: %@", someMutableString);
+    
     // static local variable
-    // 只初始化一次，如果变量被修改，值将随修改变化，不会重新初始化；
+    // 只初始化一次，内存中只有一份拷贝，如果变量被修改，值将随修改变化，不会重新初始化；
     // 作用域：只在本方法内，随实例一起销毁；
     static int kSomeStaticInt = 0;
     kSomeStaticInt ++;
     NSLog(@"kSomeStaticInt = %d", kSomeStaticInt);
     static NSString *kCellIdentifier = @"CellIdentifier";
       NSLog(@"kCellIdentifier = %@", kCellIdentifier);
+    
+    static NSString *someStaticString = @"SomeStaticString";
+    [someStaticString stringByAppendingString:@"Static"];
+    NSLog(@"someStaticString: %@", someString);
+    
+    //
+    //kSomeStaticConstInt = 11;//Cannot assign to variable 'kSomeStaticConstInt' with const-qualified type 'const int'
+    NSLog(@"kSomeStaticConstInt: %d", kSomeStaticConstInt);
+    NSLog(@"kSomeStaticConstString: %@", kSomeStaticConstString);
     
     // static global variable
     kAnotherStaticInt ++;
